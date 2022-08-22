@@ -1,6 +1,6 @@
 import React from 'react'
 import CheckoutItemTable from '../../Components/CheckoutTables/CheckoutItemTable';
-import CheckoutSection from '../CheckoutSection/CheckoutSection';
+import CheckoutSection from '../../Components/CheckoutSection/CheckoutSection';
 import { useSelector } from 'react-redux';
 import "./CheckoutBody.css"
 const CheckoutBody = () => {

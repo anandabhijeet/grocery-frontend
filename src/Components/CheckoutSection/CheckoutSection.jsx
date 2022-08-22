@@ -1,8 +1,10 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { emptyBasket } from "../../Redux/Action/Action";
+import { useNavigate } from "react-router-dom";
 import "./CheckoutSection.css";
 const CheckoutSection = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const basketItem = useSelector((state) => state?.basket);
   let subtotal = 0;
@@ -20,7 +22,7 @@ const CheckoutSection = () => {
           >
             <p>Empty Basket</p>
           </div>
-          <div className="continue-shopping checkout-alt-button">
+          <div onClick={()=>navigate("/")} className="continue-shopping checkout-alt-button">
             <p>CONTINUE SHOPPING</p>
           </div>
         </div>
@@ -52,8 +54,8 @@ const CheckoutSection = () => {
             </p>
             <hr style={{ margin: "0px" }} className="solid" />
             <div className="final-button-box">
-              <div className="final-checkout-button final-charges">
-                <h5>CHECKOUT</h5>{" "}
+              <div onClick={()=>{dispatch(emptyBasket()); navigate("/")}} className="final-checkout-button final-charges">
+                <h5>CHECKOUT</h5>
                 <i
                   style={{ marginLeft: "5px" }}
                   className="fa-solid fa-circle-right"

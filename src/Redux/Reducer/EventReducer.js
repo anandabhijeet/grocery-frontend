@@ -83,7 +83,7 @@ export const maintaingBasket = (state = [], { type, payload }) => {
        return state.filter(item=>item._id !== payload);
       } 
     case actiontypes.EMPTY_BASKET:
-      
+      state.map(el=>el["quantity"] = 1)
       return state = [];
     default:
       return state;
