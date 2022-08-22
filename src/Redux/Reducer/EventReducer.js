@@ -10,6 +10,17 @@ export const gettingProductData = (state = {}, { type, payload }) => {
   }
 };
 
+export const gettingProductCategory = (state=[],{type, payload}) =>{
+  switch (type) {
+    case actiontypes.GET_CATEGORY:
+      return state = payload?.data
+      
+    default:
+      return state;
+  }
+
+}
+
 const initialState = "Fruits, Vegetables & Herbs";
 export const changeTitle = (state = initialState, { type, payload }) => {
   switch (type) {
@@ -21,7 +32,7 @@ export const changeTitle = (state = initialState, { type, payload }) => {
   }
 };
 
-// export const changeQuant = (state = 1, { type, payload }) => {
+
 //   switch (type) {
 //     case actiontypes.INC_QUANTITY:
 //       return { ...payload, quantity: payload.quantity + state };
@@ -72,8 +83,8 @@ export const maintaingBasket = (state = [], { type, payload }) => {
        return state.filter(item=>item._id !== payload);
       } 
     case actiontypes.EMPTY_BASKET:
-      console.log(state.splice(0, state.length));
-      return state;
+      
+      return state = [];
     default:
       return state;
   }

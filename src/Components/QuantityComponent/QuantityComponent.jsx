@@ -1,18 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import { decQuantity, incQuantity } from "../../Redux/Action/Action";
-import { useSelector } from "react-redux/es/hooks/useSelector";
 import "./QuantityComponent.css";
 
 const QuantityComponent = (prop) => {
   const [qyt, setQyt] = useState(prop?.quantity);
-  
-
-
   const dispatch = useDispatch();
-  // const basketItems = useSelector(state=>state?.basket);
-  // const item = basketItems.filter(el=> el?.data._id === prop?.id);
-  // console.log("item", item);
   
   return (
     <div className="change-qty">
@@ -26,7 +19,6 @@ const QuantityComponent = (prop) => {
         <p>-</p>
       </div>
       <div className="show-qty">
-        {console.log("prop", prop)}
         <p>{qyt}</p>
       </div>
       <div

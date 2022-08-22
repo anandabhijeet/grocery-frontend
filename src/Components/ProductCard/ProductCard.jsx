@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import veg from "../../Assets/veg.png";
 import { useDispatch } from "react-redux/es/exports";
 import { addToBasket } from "../../Redux/Action/Action";
 import { useSelector } from "react-redux/es/exports";
 import "./ProductCard.css";
 
-const ProductCard = (el) => {
+const ProductCard = ({product}) => {
+  
   const dispatch = useDispatch();
   const basket = useSelector((state) => state?.basket);
   
-  const inBasket = basket.findIndex((item) => item._id === el?.data._id);
+  const inBasket = basket.findIndex((item) => item?._id === product?._id);
   let in_Basket = true;
   if (inBasket === -1) {
     in_Basket = false;
@@ -22,34 +23,37 @@ const ProductCard = (el) => {
       </div>
       <div className="image-box">
         <div className="image">
+        <img className="veg-nonVeg" src={veg} height="30px" alt="veg" />
           <img
-            src={el.data.image}
+            src={product?.image}
             className="img-fluid"
             height="80%"
             width="80%"
             alt="veg"
           />
+           
         </div>
-        <img className="veg-nonVeg" src={veg} height="30px" alt="veg" />
+        
+       
       </div>
 
       <p style={{ color: "grey", fontSize: "12px", margin: "0px" }}>
-        {el.data.brand}
+        {product?.brand}
       </p>
 
-      <p>{el.data.name}</p>
+      <p>{product?.name}</p>
 
       <p>1 kg</p>
 
       <div className="price-box">
         <p style={{ margin: "0px", fontSize: "12px" }}>
-          MRP: <span style={{ fontSize: "14px" }}>RS {el.data.price}</span>
+          MRP: <span style={{ fontSize: "14px" }}>RS {product?.price}</span>
         </p>
         <div className="delivery">
           <i
             style={{ fontSize: "20px", color: "grey" }}
             className="fa-solid fa-truck truck"
-          ></i>{" "}
+          ></i>
           <p style={{ fontSize: "9px", margin: "0px 0px 0px 3px" }}>
             standard Delivery: Today 9:00AM - 11:00AM
           </p>
@@ -66,13 +70,13 @@ const ProductCard = (el) => {
                 <p style={{ color: "rgb(204, 204, 204)" }}>Qty</p>
               </div>
               <div className="quantity">
-                {" "}
+                
                 <p>1</p>
               </div>
             </div>
 
             <div
-              onClick={() => { setBasketItem(true);dispatch(addToBasket(el.data))}}
+              onClick={() => { setBasketItem(true);dispatch(addToBasket(product))}}
               className="add-button"
             >
               <p>ADD</p>

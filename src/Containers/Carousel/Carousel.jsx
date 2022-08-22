@@ -1,50 +1,19 @@
 import React from "react";
 import "./Carousel.css";
+
 const Carousel = () => {
   return (
-    <div className="container-fluid carousel-container" >
-      <div
-        id="carouselExampleIndicators"
-        className="carousel slide"
-        data-bs-ride="carousel"
-      >
-        <div className="carousel-indicators">
-          <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="0"
-            className="active"
-            aria-current="true"
-            aria-label="Slide 1"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="1"
-            aria-label="Slide 2"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="2"
-            aria-label="Slide 3"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="3"
-            aria-label="Slide 4"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="4"
-            aria-label="Slide 4"
-          ></button>
-        </div>
-        <div className="carousel-inner">
+    <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="true">
+  <div className="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button> 
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 4"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 5"></button>
+  </div>
+         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img
+             <img
               src="https://www.bigbasket.com/media/uploads/banner_images/hp_m_gwf_happychef_460-250722.jpg"
               className="d-block w-100"
               alt="slide1"
@@ -78,10 +47,8 @@ const Carousel = () => {
               alt="slide3"
             />
           </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+        </div> 
+</div>
+  )};
 
 export default Carousel;

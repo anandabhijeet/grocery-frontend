@@ -5,7 +5,7 @@ import QuantityComponent from '../QuantityComponent/QuantityComponent';
 import "./ReviewCard.css";
 const ReviewCard = (prop) => {
   const item = prop?.data;
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
   return (
     <div className="review-card">
       <div className="image-review-box">
@@ -14,7 +14,7 @@ const dispatch = useDispatch();
       <div className='name-brand-review'>
         <p className='name-brand'>{item?.brand}</p>
         <p className='name-brand'>{item?.name}</p>
-        <p style={{fontSize:"10px", margin:"5px 0px 0px 0px"}}>2 X {item?.price}</p>
+        <p style={{fontSize:"10px", margin:"5px 0px 0px 0px"}}>{item?.quantity} X {item?.price}</p>
       </div>
       <div className="qty-box">
 

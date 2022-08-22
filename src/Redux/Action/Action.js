@@ -21,8 +21,9 @@ export const filteredProducts = (data, params) => async (dispatch) => {
   try {
     let filteredProducts = [];
 
-    if (params === "fruits" || params === "vegetables" || params === "herbs") {
-      filteredProducts = data.filter((el) => el.category === params);
+    const product = data?.filter((el) => el.category === params?._id);
+    if (product?.length > 0) {
+      filteredProducts = product;
     } else {
       filteredProducts = data;
     }
@@ -32,9 +33,25 @@ export const filteredProducts = (data, params) => async (dispatch) => {
       payload: filteredProducts,
     });
 
-    dispatch(changeTitle(params.toUpperCase()));
+    params?.category
+      ? dispatch(changeTitle(params?.category))
+      : dispatch(changeTitle(params));
   } catch (error) {
     console.log("filtered product error", error.message);
+  }
+};
+
+export const getCategories = () => async (dispatch) => {
+  try {
+    const response = await axios.get(process.env.REACT_APP_GET_CATEGORY_URL);
+    const res = response.data;
+
+    dispatch({
+      type: actiontypes.GET_CATEGORY,
+      payload: res,
+    });
+  } catch (error) {
+    console.log("get cat error", error);
   }
 };
 
@@ -46,18 +63,18 @@ export const changeTitle = (title) => {
 };
 
 export const addToBasket = (basketItem) => {
- return {
-  type: actiontypes.ADD_TO_BASKET,
-  payload: basketItem
- }
+  return {
+    type: actiontypes.ADD_TO_BASKET,
+    payload: basketItem,
+  };
 };
 
-export const removeFromBasket = (id)=>{
-  return{
-    type:actiontypes.REMOVE_FROM_BASKET,
-    payload: id
-  }
-}
+export const removeFromBasket = (id) => {
+  return {
+    type: actiontypes.REMOVE_FROM_BASKET,
+    payload: id,
+  };
+};
 
 export const incQuantity = (id) => {
   return {
@@ -73,8 +90,8 @@ export const decQuantity = (id) => {
   };
 };
 
-export const emptyBasket = ()=>{
+export const emptyBasket = () => {
   return {
     type: actiontypes.EMPTY_BASKET,
-  }
-}
+  };
+};

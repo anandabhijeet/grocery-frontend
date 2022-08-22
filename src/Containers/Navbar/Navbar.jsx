@@ -9,25 +9,11 @@ import logo2 from "../../Assets/Big-basket1.png";
 import "./Navbar.css";
 import { filteredProducts } from "../../Redux/Action/Action";
 const Navbar = (prop) => {
-  
   const dispatch = useDispatch();
   // const [fixNavbar, setFixNavbar] = useState(true);
-  const basketItem = useSelector(state=>state?.basket);
-  
-  // const changeNavBar = () => {
-  //   if (window.scrollY >= 65) {
-  //     setFixNavbar(false);
-  //   }
-
-  //   if (window.scrollY <= 65) {
-  //     setFixNavbar(true);
-  //   }
-  // };
-
-  // window.addEventListener("scroll", changeNavBar);
-
+  const basketItem = useSelector((state) => state?.basket);
   const products = useSelector((state) => state?.gettingProduct?.products);
-  const categories = products?.category;
+  const categories = useSelector((state) => state?.category);
 
   return (
     <nav
@@ -39,19 +25,25 @@ const Navbar = (prop) => {
     >
       <div className="container navbar-main-container">
         <div className="navbar-container">
-          <div className="logo-box">
+          <div className={prop.fixNavbar ? "logo-box" : "logo-box2"}>
             <img
               src={prop.fixNavbar ? logo1 : logo2}
-              alt="logo1"
+              alt="logo"
               height={prop.fixNavbar ? "100px" : "45px"}
               width={prop.fixNavbar ? "110px" : "55px"}
             />
-            <div className={prop.fixNavbar ? "dropdown" : "dropdown d-none"}>
-              <button className="dropbtn">
-                <p style={{ margin: "0px 30px 0px 0px" }}>Shop By Category</p>
+            <div className="dropdown">
+              <button className={prop.fixNavbar ? "dropbtn" : "dropbtn2"}>
+                <p style={{ margin: "0px 30px 0px 0px" }}>
+                  {prop.fixNavbar ? "Shop By Category" : "Shop"}
+                </p>
                 <i
                   className="fa fa-angle-down"
-                  style={{ margin: "5px 0px 0px 35px" }}
+                  style={
+                    prop.fixNavbar
+                      ? { margin: "5px 0px 0px 35px" }
+                      : { margin: "5px 0px 0px 10px" }
+                  }
                 ></i>
               </button>
               <div className="dropdown-content">
@@ -60,13 +52,13 @@ const Navbar = (prop) => {
                     <div
                       key={index}
                       onClick={() => {
-                        dispatch(
-                          filteredProducts(products?.data, cat.toLowerCase())
-                        );
+                        dispatch(filteredProducts(products?.data, cat));
                       }}
                       className="contents"
                     >
-                      <p style={{ margin: "0px", padding: "5px" }}>{cat}</p>
+                      <p style={{ margin: "0px", padding: "5px" }}>
+                        {cat.category}
+                      </p>
                       <hr style={{ margin: "0px" }} className="solid" />
                     </div>
                   );
@@ -120,19 +112,24 @@ const Navbar = (prop) => {
                 </div>
               </div>
               <div className="bucket-item-review">
-                {
-                  basketItem.length>0?<div className="bucket-items">
-                  <div className="review-card-section">
-                   {basketItem?.map((el,index)=>{
-                   return <div key={index}><ReviewCard  data={el} /></div>
-                  })}
+                {basketItem.length > 0 ? (
+                  <div className="bucket-items">
+                    <div className="review-card-section">
+                      {basketItem?.map((el, index) => {
+                        return (
+                          <div key={index}>
+                            <ReviewCard data={el} />
+                          </div>
+                        );
+                      })}
+                    </div>
+                    <ReviewCheckout />
                   </div>
-                   <ReviewCheckout />
-                  </div>:<div className="container bucket-item-container">
-                  <p>Your basket is empty. Start shopping now!</p>
-                </div>
-                 
-                }
+                ) : (
+                  <div className="container bucket-item-container">
+                    <p>Your basket is empty. Start shopping now!</p>
+                  </div>
+                )}
               </div>
             </div>
           </div>
