@@ -3,12 +3,13 @@ import HomPage from './Pages/HomePage/HomPage';
 import { BrowserRouter as Router, Route, Routes  } from 'react-router-dom'
 import CheckoutPage from './Pages/CheckoutPage/CheckoutPage';
 import { useDispatch } from 'react-redux/es/exports';
-import { getProduct } from './Redux/Action/Action';
+import { getProduct, getCategories} from './Redux/Action/Action';
 const App = () => {
   const dispatch = useDispatch();
 
-  useEffect(()=>{
-    dispatch(getProduct())
+  useEffect(()=>{ 
+    dispatch(getProduct());
+    dispatch(getCategories());
   },[dispatch])
   
   return (

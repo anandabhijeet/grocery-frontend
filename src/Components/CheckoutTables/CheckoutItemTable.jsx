@@ -1,8 +1,12 @@
 import React from "react";
-import "./CheckoutItemTable.css"
+import { useSelector, useDispatch } from "react-redux";
+import { removeFromBasket } from "../../Redux/Action/Action";
+import "./CheckoutItemTable.css";
 const CheckoutItemTable = () => {
+  const dispatch = useDispatch();
+  const basketItem = useSelector((state) => state?.basket);
   return (
-    <table >
+    <table>
       <thead>
         <tr>
           <th scope="col">ITEM DESCRIPTION</th>
@@ -12,30 +16,25 @@ const CheckoutItemTable = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td >Tomato hybrid - (loose)</td>
-          <td>Rs 91.00</td>
-          <td>2</td>
-          <td>RS 182.00 <span style={{marginLeft:"30px"}}>&#10006;</span></td>
-         
-        </tr>
-       
-        <tr>
-          <td >Tomato hybrid - (loose)</td>
-          <td>Rs 91.00</td>
-          <td>2</td>
-          <td>RS 182.00 <span style={{marginLeft:"30px"}}>&#10006;</span></td>
-        </tr>
-       
-        <tr>
-          <td >Tomato hybrid - (loose)</td>
-          <td>Rs 91.00</td>
-          <td>2</td>
-          <td>RS 182.00 <span style={{marginLeft:"30px"}}>&#10006;</span></td>
-        </tr>
-      
+        {basketItem?.map((item) => {
+          return (
+            <tr key={item._id}>
+              <td>{item.name}</td>
+              <td>Rs {item.price}</td>
+              <td>{item.quantity}</td>
+              <td className="subtotal">
+                <p>RS {item.price * item.quantity}</p>
+                <span
+                  onClick={() => dispatch(removeFromBasket(item._id))}
+                  style={{ marginLeft: "30px" }}
+                >
+                  &#10006;
+                </span>
+              </td>
+            </tr>
+          );
+        })}
       </tbody>
-      
     </table>
   );
 };

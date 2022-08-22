@@ -21,9 +21,18 @@
       padding: 5px;
       font-size: 16px;
       border: none;
-      width: 100%;
+      min-width: 230px;
       display: flex;
       justify-content: flex-start;
+    }
+
+    .dropbtn2{
+      border: 1px solid rgb(247, 246, 246);
+      display: flex;
+      justify-content: flex-start;
+      background-color: #fff;
+      margin: 0px 0px 0px 10px
+      
     }
 
     .dropdown {
@@ -37,7 +46,7 @@
       background-color: #fff;
       min-width: 300px;
       box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-      z-index: 1;
+      z-index: 3;
     }
 
     .dropdown-content p {
@@ -106,8 +115,13 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-    
-      
+    }
+
+    .logo-box2{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin:0px 0px 0px 20px
     }
 
     .contact-bucket-box{
@@ -151,5 +165,14 @@
       display: block;
       border: 1px solid rgb(209, 208, 208);
       border-top: 0;
-    } 
+    }
+
+    .review-card-section{
+      width: 100%;
+      max-height: 172px;
+      
+      display: flex;
+      flex-direction: column;
+      overflow: auto;
+    }
 

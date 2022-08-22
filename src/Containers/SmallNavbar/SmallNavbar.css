@@ -1,0 +1,48 @@
+.custom-small-navbar{
+    background-color: #84C225 !important;
+    color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    font-weight: 700;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    z-index: 3;
+    top: 0px;
+    
+}
+
+.cart-icon-box{
+    height: 35px;
+    width: 35px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.custom-badge{
+    background-color: rgb(244, 1, 1);
+    height: 18px;
+    min-width: 18px;
+    border-radius: 50%;
+    position:absolute;
+    z-index: 1;
+    top:0px;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+}
+
+.custom-badge p{
+    margin: 0px;
+    font-size: 15px;
+}
+
+
+
