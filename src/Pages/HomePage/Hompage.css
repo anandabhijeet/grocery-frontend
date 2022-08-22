@@ -1,0 +1,13 @@
+
+.homepage-margin{
+    margin-top: 145px;
+}
+
+@media only screen and (max-width: 992px) {
+    .homepage-body{
+        margin-top: 45px;
+    }
+    .homepage-margin{
+     margin-top: 0px;   
+    }
+}

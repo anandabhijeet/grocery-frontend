@@ -1,22 +1,28 @@
-import React from 'react'
+import React from 'react';
+import { useDispatch } from 'react-redux/es/hooks/useDispatch';
+import { removeFromBasket } from '../../Redux/Action/Action';
+import QuantityComponent from '../QuantityComponent/QuantityComponent';
 import "./ReviewCard.css";
-const ReviewCard = () => {
+const ReviewCard = (prop) => {
+  const item = prop?.data;
+const dispatch = useDispatch();
   return (
     <div className="review-card">
       <div className="image-review-box">
-        <img src="https://www.freepnglogos.com/uploads/eggplant-png/eggplant-brinjal-png-image-purepng-transparent-png-image-library-29.png" width="65px" alt="veg-img" />
+        <img src={item?.image} width="65px" alt="veg-img" />
       </div>
       <div className='name-brand-review'>
-        <p className='name-brand'>Fresho</p>
-        <p className='name-brand'>Tomato Hybrid - (loose)</p>
-        <p style={{fontSize:"10px", margin:"5px 0px 0px 0px"}}>2 X 91.00</p>
+        <p className='name-brand'>{item?.brand}</p>
+        <p className='name-brand'>{item?.name}</p>
+        <p style={{fontSize:"10px", margin:"5px 0px 0px 0px"}}>2 X {item?.price}</p>
       </div>
       <div className="qty-box">
-        <p>2</p>
+
+        <QuantityComponent id={item?._id} quantity={item?.quantity} />
       </div> 
       <div className="final-price-box">
-        <p>Rs 91.00</p>
-        <span>&#10060;</span>
+        <p>Rs {item?.price}</p>
+        <span onClick={()=>dispatch(removeFromBasket(item?._id))}>&#10060;</span>
       </div>
     </div>
   )

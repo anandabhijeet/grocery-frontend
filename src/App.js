@@ -7,7 +7,8 @@ import { getProduct } from './Redux/Action/Action';
 const App = () => {
   const dispatch = useDispatch();
 
-  useEffect(()=>{
+  useEffect(()=>{ 
+    
     dispatch(getProduct())
   },[dispatch])
   

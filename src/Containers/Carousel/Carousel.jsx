@@ -1,8 +1,8 @@
 import React from "react";
-
+import "./Carousel.css";
 const Carousel = () => {
   return (
-    <div className="container-fluid" style={{margin:"20px 0px 30px 0px"}}>
+    <div className="container-fluid carousel-container" >
       <div
         id="carouselExampleIndicators"
         className="carousel slide"

@@ -7,6 +7,7 @@
   justify-content: flex-start;
   align-items: center;
   padding: 7px;
+  margin-bottom: 5px;
 }
 
 .image-review-box {
@@ -34,7 +35,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   width: 20%;
   height: 68px;
   cursor: pointer;
