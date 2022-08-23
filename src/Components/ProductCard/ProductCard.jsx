@@ -67,7 +67,7 @@ const ProductCard = ({product}) => {
           <div className="add-box my-1">
             <div className="initial-quantity">
               <div className="qty">
-                <p style={{ color: "rgb(204, 204, 204)" }}>Qty</p>
+                <p style={{ color: "#808080" }}>Qty</p>
               </div>
               <div className="quantity">
                 
